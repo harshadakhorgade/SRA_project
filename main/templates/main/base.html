@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SRA Project{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>SRA Project</h1>
+        <hr>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; {{ year }} SRA Project</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+{% block title %}Factsheet List{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>All Factsheets</h2>
+    <ul>
+        {% for f in factsheets %}
+            <li>
+                <a href="{% url 'factsheet-detail' f.pk %}">
+                    {{ f.file_no }} - {{ f.name_of_society }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create-factsheet' %}" class="btn btn-primary">+ New Factsheet</a>
+</div>
+{% endblock %}
