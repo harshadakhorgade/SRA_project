@@ -23,10 +23,37 @@ class Factsheet(models.Model):
     slum_declared_or_censused = models.CharField(max_length=255, blank=True, null=True)
 
     # Annexure II
-    competent_authority_name = models.CharField(max_length=255, blank=True, null=True)
-    certification_date = models.DateField(blank=True, null=True)
+    competent_authority = models.CharField(max_length=255, blank=True)
+    certification_date_annexure2 = models.DateField(null=True, blank=True)
+    tenants_total = models.IntegerField(null=True, blank=True)
+    tenants_eligible = models.IntegerField(null=True, blank=True)
+    tenants_residential = models.IntegerField(null=True, blank=True)
+    tenants_commercial = models.IntegerField(null=True, blank=True)
+    tenants_res_comm = models.IntegerField(null=True, blank=True)
+    tenants_others = models.IntegerField(null=True, blank=True)
+    tenants_pap = models.IntegerField(null=True, blank=True)
+    tenants_non_eligible = models.IntegerField(null=True, blank=True)
+    percent_eligible_consent = models.CharField(max_length=255, blank=True)
 
+    # Annexure III
+    certification_date_annexure3 = models.CharField(max_length=255, blank=True)
+    date_of_bank_guarantee = models.CharField(max_length=255, blank=True)
+    amount_bank_guarantee = models.CharField(max_length=255, blank=True)
+    land_premium_amount = models.CharField(max_length=255, blank=True)
+    revised_loi_details = models.CharField(max_length=255, blank=True)
+    loi_issue_details = models.CharField(max_length=255, blank=True)
+    fsi_sanctioned = models.DecimalField(max_digits=6, decimal_places=3, null=True, blank=True)
+    rehab_built_up_area = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    pap_generated = models.IntegerField(null=True, blank=True)
+    permissible_sale_builtup_area = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    tdr_generated = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
+    tdr_granted_date = models.CharField(max_length=255, blank=True)
+
+    # Metadata
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"Factsheet - {self.file_no}"
+        return f"FactSheet {self.file_no}"
+
+ 

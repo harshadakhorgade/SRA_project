@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="display-4 fw-bold">Welcome to SRA Project</h1>
+    <p class="lead">A Smart Resource Allocation System</p>
+
+    <div class="mt-4">
+        <a href="{% url 'register' %}" class="btn btn-outline-secondary btn-lg">Register</a>
+
+        <a href="{% url 'login' %}" class="btn btn-primary btn-lg me-2">Login</a>
+
+    </div>
+</div>
+{% endblock %}
