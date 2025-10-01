@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("users.urls")),
     path("factsheet/", include("factsheet.urls")),
+    path("dashboard/", include("dashboard.urls")),  # dashboard app
     path('', include('main.urls')),
 ]

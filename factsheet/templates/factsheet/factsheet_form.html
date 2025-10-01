@@ -6,7 +6,28 @@
     <h2>Create Factsheet</h2>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        <h4>Factsheet</h4>
+        {{ factsheet_form.as_p }}
+
+        <h4>Annexure II</h4>
+        {{ annexureII_form.as_p }}
+
+        <h4>Annexure III</h4>
+        {{ annexureIII_form.as_p }}
+
+        <h4>Transit Camp</h4>
+        {{ transitcamp_form.as_p }}
+
+        <h4>Approval</h4>
+        {{ approval_form.as_p }}
+
+        <h4>Construction Status</h4>
+        {{ construction_form.as_p }}
+
+        <h4>Stop Work</h4>
+        {{ stopwork_form.as_p }}
+
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>

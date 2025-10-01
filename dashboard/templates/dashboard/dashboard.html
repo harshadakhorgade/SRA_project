@@ -1,0 +1,14 @@
+{% extends "users/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Welcome, {{ user.first_name|default:user.username }} 👋</h1>
+    <p>This is your dashboard page.</p>
+
+    <div class="mt-4">
+        <a href="{% url 'users:login' %}" class="btn btn-secondary">Logout</a>
+    </div>
+</div>
+{% endblock %}

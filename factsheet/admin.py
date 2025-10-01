@@ -1,44 +1,41 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
-from .models import Factsheet
+from .models import Factsheet, AnnexureII, AnnexureIII, TransitCamp, Approval, ConstructionStatus, StopWork
 
 @admin.register(Factsheet)
 class FactsheetAdmin(admin.ModelAdmin):
-    list_display = ("id", "file_no", "name_of_society", "date_of_acceptance", "created_at")
-    search_fields = ("file_no", "name_of_society", "developer_with_address")
-    list_filter = ("date_of_acceptance", "created_at")
-    readonly_fields = ("created_at",)
+    list_display = ("id", "file_no", "name_of_society", "created_at", "updated_at")
+    readonly_fields = ("created_at", "updated_at")
+    search_fields = ("file_no", "name_of_society")
+    list_filter = ("created_at", "updated_at")
 
-    fieldsets = (
-        ("Basic Information", {
-            "fields": (
-                "file_no",
-                "name_of_society",
-                "developer_with_address",
-                "architect_with_address",
-                "date_of_acceptance",
-                "common_consent",
-                "village_cts_no",
-                "ownership_of_land",
-                "area_of_plot",
-            )
-        }),
-        ("D.P. Reservation Details", {
-            "fields": (
-                "buildable_reservation_name",
-                "buildable_reservation_area",
-                "non_buildable_reservation_name",
-                "non_buildable_reservation_area",
-                "slum_declared_or_censused",
-            )
-        }),
-        ("Annexure II", {
-            "fields": (
-                "competent_authority_name",
-                "certification_date",
-            )
-        }),
-        ("Meta", {"fields": ("created_at",)}),
-    )
+
+@admin.register(AnnexureII)
+class AnnexureIIAdmin(admin.ModelAdmin):
+    list_display = ("id", "competent_authority", "tenants_total", "tenants_eligible")
+    search_fields = ("competent_authority",)
+
+
+@admin.register(AnnexureIII)
+class AnnexureIIIAdmin(admin.ModelAdmin):
+    list_display = ("id", "certification_date_annexure3", "fsi_sanctioned", "rehab_built_up_area")
+    search_fields = ("certification_date_annexure3",)
+
+
+@admin.register(TransitCamp)
+class TransitCampAdmin(admin.ModelAdmin):
+    list_display = ("id", "building_no", "floors", "no_of_tenants", "date_of_approval")
+
+
+@admin.register(Approval)
+class ApprovalAdmin(admin.ModelAdmin):
+    list_display = ("id", "building_type", "building_no", "ioa_date", "remarks")
+
+
+@admin.register(ConstructionStatus)
+class ConstructionStatusAdmin(admin.ModelAdmin):
+    list_display = ("id", "building_type", "building_no", "date_of_visit", "no_of_floors_completed")
+
+
+@admin.register(StopWork)
+class StopWorkAdmin(admin.ModelAdmin):
+    list_display = ("id", "building_no", "date_of_order", "reason")

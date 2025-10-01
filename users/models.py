@@ -6,7 +6,7 @@ from users.managers import CustomUserManager
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     ROLE_CHOICES = (
         ('admin', 'Admin'),
-        ('coordinator', 'Coordinator'),
+      
         ('user', 'User'),
     )
 
