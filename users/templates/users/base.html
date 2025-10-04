@@ -33,11 +33,29 @@
       <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
         <div class="ms-auto d-flex align-items-center">
           <span class="me-3">
-            <strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong>
+            <strong>{{ request.user.first_name|default:request.user.email }} {{ request.user.last_name }}</strong>
           </span>
-          <span class="me-3">{{ request.user.profile.city }}, {{ request.user.profile.country }}</span>
-          <img src="{{ request.user.profile.image.url }}" 
-               alt="Profile" class="rounded-circle" width="40" height="40">
+          {% if request.user.profile %}
+            <span class="me-3">
+              {% if request.user.profile.city %}{{ request.user.profile.city }}{% endif %}
+              {% if request.user.profile.city and request.user.profile.country %}, {% endif %}
+              {% if request.user.profile.country %}{{ request.user.profile.country }}{% endif %}
+            </span>
+            {% if request.user.profile.image %}
+              <img src="{{ request.user.profile.image.url }}" 
+                   alt="Profile" class="rounded-circle" width="40" height="40">
+            {% else %}
+              <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center" 
+                   style="width: 40px; height: 40px; color: white;">
+                {{ request.user.first_name|first|default:request.user.email|first|upper }}
+              </div>
+            {% endif %}
+          {% else %}
+            <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center" 
+                 style="width: 40px; height: 40px; color: white;">
+              {{ request.user.first_name|first|default:request.user.email|first|upper }}
+            </div>
+          {% endif %}
         </div>
       </nav>
 

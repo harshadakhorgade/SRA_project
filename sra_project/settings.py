@@ -38,9 +38,10 @@ REST_FRAMEWORK = {
 # settings.py
 
 AUTH_USER_MODEL = "users.CustomUser"
-LOGIN_URL = "users:login"
-LOGIN_REDIRECT_URL = "dashboard:home"
-LOGOUT_REDIRECT_URL = "users:login"
+# Remove these settings temporarily to avoid redirect loops
+# LOGIN_URL = "/login/"
+# LOGIN_REDIRECT_URL = "/dashboard/"
+# LOGOUT_REDIRECT_URL = "/login/"
 
 # Application definition
 

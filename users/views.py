@@ -38,7 +38,7 @@ def user_login(request):
             user = form.get_user()
             login(request, user)
             print("DEBUG: User logged in ✅")
-            return redirect("dashboard:home")  # redirect to dashboard
+            return redirect("/dashboard/")  # redirect to dashboard
         else:
             messages.error(request, "Invalid email or password")
             print("DEBUG: Login errors:", form.errors)
@@ -53,9 +53,9 @@ def dashboard_redirect(request):
     if request.user.is_staff or request.user.is_superuser:
         return redirect("/admin/")  # Admin goes to admin panel
     else:
-        return redirect("dashboard:home")  # Regular user goes to dashboard
+        return redirect("/dashboard/")  # Regular user goes to dashboard
 
 # 🔹 Logout
 def user_logout(request):
     logout(request)
-    return redirect("login")
+    return redirect("/login/")
